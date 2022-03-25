@@ -4,10 +4,14 @@
 package main
 
 import (
+	"encoding/hex"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"gitee.com/yctxkj/xcrypto/xaes"
 )
 
 type gui struct {
@@ -22,8 +26,8 @@ func newGUI() *gui {
 
 func (g *gui) makeUI() fyne.CanvasObject {
 	g.txtResult = &widget.Entry{Text: "", PlaceHolder: "this is result ! "}
-	g.txtPlain = &widget.Entry{Text: "", PlaceHolder: "please intput plain ..."}
-	g.txtKey = &widget.Entry{Text: "", PlaceHolder: "please input key ..."}
+	g.txtPlain = &widget.Entry{Text: "11223344556677881122334455667788", PlaceHolder: "please intput plain ..."}
+	g.txtKey = &widget.Entry{Text: "11223344556677881122334455667788", PlaceHolder: "please input key ..."}
 
 	return container.NewVBox(
 		widget.NewLabel("plain"),
@@ -32,7 +36,54 @@ func (g *gui) makeUI() fyne.CanvasObject {
 		g.txtKey,
 		widget.NewLabel("cipher"),
 		g.txtResult,
-		widget.NewButtonWithIcon("encrypt", theme.ConfirmIcon(), func() {}),
-		widget.NewButtonWithIcon("decrypt", theme.CancelIcon(), func() {}),
-		widget.NewButtonWithIcon("exit", theme.DeleteIcon(), func() {}))
+		widget.NewButtonWithIcon("encrypt", theme.ConfirmIcon(), func() {
+			// 加密
+			g.txtResult.SetText("")
+			g.txtResult.Refresh()
+			sPlain := g.txtPlain.Text
+			//dialog.NewInformation("tip", fmt.Sprintf("plain: %v", sPlain), w).Show()
+			bytPlain, err := hex.DecodeString(sPlain)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			bytKey, err := hex.DecodeString(g.txtKey.Text)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			bytCipher, err := xaes.EncryptECB_Pad(bytPlain, bytKey)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			sCipher := hex.EncodeToString(bytCipher)
+			g.txtResult.SetText(sCipher)
+		}),
+		widget.NewButtonWithIcon("decrypt", theme.CancelIcon(), func() {
+			// 解密
+			g.txtPlain.SetText("")
+			sPlain := g.txtResult.Text
+			//dialog.NewInformation("tip", fmt.Sprintf("plain: %v", sPlain), w).Show()
+			bytPlain, err := hex.DecodeString(sPlain)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			bytKey, err := hex.DecodeString(g.txtKey.Text)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			bytCipher, err := xaes.DecryptECB_Pad(bytPlain, bytKey)
+			if err != nil {
+				dialog.NewError(err, w).Show()
+				return
+			}
+			sCipher := hex.EncodeToString(bytCipher)
+			g.txtPlain.SetText(sCipher)
+		}),
+		widget.NewButtonWithIcon("exit", theme.DeleteIcon(), func() {
+			w.Close()
+		}))
 }

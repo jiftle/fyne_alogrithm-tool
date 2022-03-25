@@ -24,7 +24,7 @@
       "Name": "txtPlain",
       "Struct": {
         "Hidden": false,
-        "Text": "",
+        "Text": "11223344556677881122334455667788",
         "TextStyle": {
           "Bold": false,
           "Italic": false,
@@ -60,7 +60,7 @@
       "Name": "txtKey",
       "Struct": {
         "Hidden": false,
-        "Text": "",
+        "Text": "11223344556677881122334455667788",
         "TextStyle": {
           "Bold": false,
           "Italic": false,
