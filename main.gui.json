@@ -1,0 +1,151 @@
+{
+  "Type": "*fyne.Container",
+  "Layout": "VBox",
+  "Name": "",
+  "Objects": [
+    {
+      "Type": "*widget.Label",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "plain",
+        "Alignment": 0,
+        "Wrapping": 0,
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        }
+      }
+    },
+    {
+      "Type": "*widget.Entry",
+      "Name": "txtPlain",
+      "Struct": {
+        "Hidden": false,
+        "Text": "",
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        },
+        "PlaceHolder": "please intput plain ...",
+        "Password": false,
+        "MultiLine": false,
+        "Wrapping": 1,
+        "CursorRow": 0,
+        "CursorColumn": 0
+      }
+    },
+    {
+      "Type": "*widget.Label",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "key",
+        "Alignment": 0,
+        "Wrapping": 0,
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        }
+      }
+    },
+    {
+      "Type": "*widget.Entry",
+      "Name": "txtKey",
+      "Struct": {
+        "Hidden": false,
+        "Text": "",
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        },
+        "PlaceHolder": "please input key ...",
+        "Password": false,
+        "MultiLine": false,
+        "Wrapping": 1,
+        "CursorRow": 0,
+        "CursorColumn": 0
+      }
+    },
+    {
+      "Type": "*widget.Label",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "cipher",
+        "Alignment": 0,
+        "Wrapping": 0,
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        }
+      }
+    },
+    {
+      "Type": "*widget.Entry",
+      "Name": "txtResult",
+      "Struct": {
+        "Hidden": false,
+        "Text": "",
+        "TextStyle": {
+          "Bold": false,
+          "Italic": false,
+          "Monospace": false,
+          "TabWidth": 0
+        },
+        "PlaceHolder": "this is result ! ",
+        "Password": false,
+        "MultiLine": false,
+        "Wrapping": 1,
+        "CursorRow": 0,
+        "CursorColumn": 0
+      }
+    },
+    {
+      "Type": "*widget.Button",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "encrypt",
+        "Icon": "ConfirmIcon",
+        "Importance": 0,
+        "Alignment": 0,
+        "IconPlacement": 0
+      }
+    },
+    {
+      "Type": "*widget.Button",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "decrypt",
+        "Icon": "CancelIcon",
+        "Importance": 0,
+        "Alignment": 0,
+        "IconPlacement": 0
+      }
+    },
+    {
+      "Type": "*widget.Button",
+      "Name": "",
+      "Struct": {
+        "Hidden": false,
+        "Text": "exit",
+        "Icon": "DeleteIcon",
+        "Importance": 0,
+        "Alignment": 0,
+        "IconPlacement": 0
+      }
+    }
+  ]
+}
